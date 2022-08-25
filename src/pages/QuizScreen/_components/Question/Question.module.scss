@@ -1,10 +1,16 @@
 .wrapper {
-  margin: 40px 0;
+  margin: 50px 0;
   min-height: 120px;
   p {
     color: #4953be;
     text-align: center;
     font-weight: 500;
     font-size: 25px;
+  }
+
+  @media (max-width: 380px) {
+    p{
+      text-align: start;
+    }
   }
 }

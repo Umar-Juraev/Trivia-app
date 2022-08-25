@@ -27,7 +27,10 @@ const SettingScreen: FC<Props> = () => {
 
   const handleSubmit = () => {
     if (difficulty && register) {
-      localStorage.setItem("filters",JSON.stringify({ difficulty, amount: register.value }));
+      localStorage.setItem(
+        "filters",
+        JSON.stringify({ difficulty, amount: register.value })
+      );
       dispatch(setFiltersSlice(localStorage.getItem("filters")));
       navigate("/quizes", { replace: true });
       setRequired(false);

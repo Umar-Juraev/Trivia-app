@@ -2,7 +2,8 @@
   background-color: #4751c0;
   height: 100vh;
   width: 100vw;
-
+  overflow: hidden;
+  
   &.light {
     background-color: #fff;
   }

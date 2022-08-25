@@ -25,6 +25,9 @@
       line-height: 150%;
       text-transform: lowercase;
       color: #ffffff;
+      @media (max-width: 380px) {
+        font-size: 13px;
+      }
     }
     &__icon {
       transition: 0.2s;
@@ -51,6 +54,9 @@
       background-color: #fff;
       cursor: pointer;
       transition: 0.1s;
+      @media (max-width: 380px) {
+        font-size: 13px;
+      }
       &:hover {
         background-color: #fff;
         opacity: 0.9;

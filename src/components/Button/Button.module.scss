@@ -8,6 +8,10 @@ button {
   line-height: 149.9%;
   text-transform: uppercase;
   cursor: pointer;
+  &:active {
+    box-shadow: none;
+    transform: translateY(3px);
+  }
 }
 
 .primary {
@@ -16,14 +20,18 @@ button {
   transition: 0.1s;
   color: #fff;
   letter-spacing: 0.5px;
-  &:active {
-    box-shadow: none;
-    transform: translateY(3px);
-  }
+
 }
 .secondary{
   background: #424A9E;
   color: #fff;
+  box-shadow: 0 5px #424A9E;
+
+  @media (max-width: 380px) {
+    background: #4953BE;
+    color: #fff;
+    box-shadow: 0 5px #424A9E;  
+  }
 }
 .gosht{
   border: 2px solid #4953BE;

@@ -3,12 +3,18 @@
   width: 50%;
   min-width: 320px;
   margin: 16px 0;
+  @media (max-width: 380px) {
+  margin: 28px 0 120px 0;
+  }
   &__label {
     position: relative;
     margin-bottom: 10px;
     display: flex;
     justify-content: space-between;
     align-items: center;
+    @media (max-width: 380px) {
+      font-size: 13px;
+    }
   }
   input {
     width: 100%;
@@ -23,5 +29,8 @@
     line-height: 150%;
     text-transform: lowercase;
     color: #ffffff;
+    @media (max-width: 380px) {
+      font-size: 13px;
+    }
   }
 }

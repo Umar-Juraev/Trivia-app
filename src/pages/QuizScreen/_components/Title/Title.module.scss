@@ -5,4 +5,8 @@
   text-align: center;
   letter-spacing: 0.05em;
   color: #4953be;
+  @media (max-width: 380px) {
+    font-size: 31px;
+    line-height: 39px;
+  }
 }
