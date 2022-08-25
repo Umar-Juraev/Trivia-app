@@ -1,0 +1,12 @@
+.wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  height: 100%;
+  .btnBox {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+}

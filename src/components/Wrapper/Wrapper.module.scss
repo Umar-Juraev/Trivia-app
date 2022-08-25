@@ -1,0 +1,29 @@
+.wrapper {
+  background-color: #4751c0;
+  height: 100vh;
+  width: 100vw;
+
+  &.light {
+    background-color: #fff;
+  }
+  .icon {
+    position: absolute;
+    z-index: 1;
+    &.leftTop {
+      left: 0;
+      top: 0;
+    }
+    &.leftBottom {
+      left: 0;
+      bottom: -40px;
+    }
+    &.rightTop {
+      right: 0;
+      top: 0;
+    }
+    &.RightBottom {
+      right: 0;
+      bottom: 0;
+    }
+  }
+}

@@ -1,0 +1,30 @@
+.indicatorTitleWrapper {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  .avatar {
+    width: 45px;
+    height: 45px;
+    background-color: #fff;
+    border-radius: 50%;
+  }
+  p {
+    color: #fff;
+    font-weight: 500;
+    font-size: 20px;
+    span {
+      color: #ff7878;
+      font-size: 21px;
+      &:last-child {
+        font-size: 15px;
+        color: #fff;
+      }
+    }
+  }
+}
+.indicatorBox {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 4px;
+}

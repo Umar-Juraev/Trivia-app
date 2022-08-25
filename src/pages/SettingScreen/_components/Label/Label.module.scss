@@ -1,0 +1,13 @@
+.wrapper {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  &__icon {
+  }
+  &__text {
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 151.9%;
+    color: #f7a491;
+  }
+}

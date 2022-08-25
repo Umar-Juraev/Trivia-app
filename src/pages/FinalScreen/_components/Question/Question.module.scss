@@ -1,0 +1,17 @@
+.item {
+  width: 100%;
+  padding: 15px 20px ;
+  border-radius: 14px;
+  background: #fffbfa;
+  margin-bottom: 15px;
+  display: flex;
+  align-items: center;
+  opacity: 0.9;
+  justify-content: space-between;
+  p{
+    color: #464fac;
+    font-weight: 500;
+    font-size: 16px;
+    width: 90%;
+  }
+}

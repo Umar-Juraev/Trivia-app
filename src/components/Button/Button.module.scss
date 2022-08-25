@@ -1,0 +1,31 @@
+button {
+  width: 50%;
+  min-width: 320px;
+  height: 60px;
+  border-radius: 14px;
+  font-weight: 700;
+  font-size: 15px;
+  line-height: 149.9%;
+  text-transform: uppercase;
+  cursor: pointer;
+}
+
+.primary {
+  background: linear-gradient(90deg, #ffa67a 0%, #ff6065 100%);
+  box-shadow: 0 5px #c65252;
+  transition: 0.1s;
+  color: #fff;
+  letter-spacing: 0.5px;
+  &:active {
+    box-shadow: none;
+    transform: translateY(3px);
+  }
+}
+.secondary{
+  background: #424A9E;
+  color: #fff;
+}
+.gosht{
+  border: 2px solid #4953BE;
+  color: #4953BE;
+}

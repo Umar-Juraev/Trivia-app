@@ -1,0 +1,35 @@
+.wrapper {
+  .level {
+    text-align: center;
+    letter-spacing: 0.5rem;
+    text-transform: lowercase;
+    color: #4953be;
+    font-weight: 500;
+    font-size: 25px;
+    line-height: 116.13%;
+    margin: 15px 0 10px 0;
+  }
+  width: 300px;
+  .indicatorBox {
+    width: 100%;
+    &__Figures {
+      font-weight: 600;
+      color: #4953be;
+      font-size: 15px;
+      span {
+        color: #ff7878;
+        font-size: 24px;
+      }
+    }
+    &__line {
+      background-color: rgba(128, 128, 128, 0.4);
+      height: 2px;
+      width: 100%;
+      span {
+        height: 100%;
+        background-color: orange;
+        display: block;
+      }
+    }
+  }
+}

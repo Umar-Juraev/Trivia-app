@@ -1,26 +1,24 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { FC, lazy, Suspense } from "react";
+import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
+import { Spinner } from "components";
 
-function App() {
+const SettingPage = lazy(() => import("./pages/SettingScreen"));
+const QuizPage = lazy(() => import("./pages/QuizScreen"));
+const FinalPage = lazy(() => import("./pages/FinalScreen"));
+
+const App: FC = () => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <BrowserRouter>
+      <Suspense fallback={<Spinner/>}>
+        <Routes>
+          <Route path="/settings" element={<SettingPage />} />
+          <Route path="/quizes" element={<QuizPage />} />
+          <Route path="/end" element={<FinalPage />} />
+          <Route path="/" element={<Navigate to="settings" replace />} />
+        </Routes>
+      </Suspense>
+    </BrowserRouter>
   );
-}
+};
 
 export default App;
