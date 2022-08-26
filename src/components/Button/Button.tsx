@@ -1,18 +1,18 @@
 import { FC } from "react";
 import classes from "./Button.module.scss";
 
-// type TypeBtn = "primary" | "secondary" | "gosht";
+type TypeBtn = "primary" | "secondary" | "gosht";
 
 type Props = {
   text: string;
-  type:  string;
-  onSubmit?: () => void;
+  type: TypeBtn;
+  onSubmit: (e: React.MouseEvent<HTMLButtonElement>) => void;
 };
 
 const Button: FC<Props> = ({ text, type, onSubmit }) => {
   return (
     <button
-      onClick={onSubmit}
+      onClick={(e) => onSubmit(e)}
       className={
         (type === "primary" && classes.primary) ||
         (type === "secondary" && classes.secondary) ||

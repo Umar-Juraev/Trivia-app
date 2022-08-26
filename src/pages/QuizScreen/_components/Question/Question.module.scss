@@ -1,14 +1,15 @@
+@import '../../../../assets/styles/_animation.scss';
 .wrapper {
   margin: 50px 0;
-  min-height: 120px;
+  min-height: 100px;
+  animation: fade 0.3s ease-in ;
   p {
     color: #4953be;
     text-align: center;
     font-weight: 500;
     font-size: 25px;
   }
-
-  @media (max-width: 380px) {
+  @media (max-width: 500px) {
     p{
       text-align: start;
     }

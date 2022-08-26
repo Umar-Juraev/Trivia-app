@@ -1,7 +1,7 @@
 import { FC } from "react";
 import { Button, Wrapper } from "components";
 import { Indicator, Question } from "./_components";
-import { CloseIcon, StarIcon } from "assets/svg";
+import { CloseIcon } from "assets/svg";
 
 import classes from "./FinalScreen.module.scss";
 import { useAppSelector } from "store/hooks";
@@ -14,7 +14,9 @@ const FinalScreen: FC<Props> = () => {
   const navigate = useNavigate();
   const handlefinish = () => {
     navigate("/settings", { replace: true });
+    localStorage.removeItem('filters')
   };
+
   return (
     <Wrapper>
       <div className={`${classes.wrapper} container`}>

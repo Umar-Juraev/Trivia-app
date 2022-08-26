@@ -11,7 +11,7 @@ const Question: FC<Props> = ({ isCorrect, question }) => {
   
   return (
     <div className={classes.item}>
-      <p>{question.replace(/&quot;|&#039;/g, '"')}</p>
+      <p>{question.replace(/&quot;|&eacute;|&#039;/g, '"')}</p>
       <span>{isCorrect ? <TrueIcon /> : <FalseIcon />}</span>
     </div>
   );

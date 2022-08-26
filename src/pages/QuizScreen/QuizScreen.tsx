@@ -11,28 +11,22 @@ import { setCorrectAnswersSlice, setScoreSlice } from "store/slices/quiz";
 
 type Props = {};
 const QuizScreen: FC<Props> = () => {
-  const { filters} = useAppSelector((state) => state.filters);
-  const { data  , isLoading } = useQuizQuery(filters);
+  const { filters } = useAppSelector((state) => state.filters);
+  const { data, isLoading } = useQuizQuery(filters);
   const [questionIndex, setQuestionIndex] = useState<number>(0);
-  const [options, setOptions] = useState<Array<string>>([]);
   const navigate = useNavigate();
   const dispatch = useAppDispatch();
 
-  useEffect(() => {
-    if (data?.results.length) {
-      const question = data?.results[questionIndex];
-      let answers = [...question.incorrect_answers, question.correct_answer];
-      setOptions(answers);
-    }
-  }, [data, questionIndex]);
 
-  const handleClickAnswer = (e: string) => {
+  const handleClickAnswer = (e: any) => {
     const question = data?.results[questionIndex];
-    if (e === question?.correct_answer) {
+    console.log(e.target.textContent.toUpperCase());
+    console.log(question?.correct_answer.toUpperCase());    
+    if (e.target.textContent.toUpperCase() === question?.correct_answer.toUpperCase()) {
       dispatch(setScoreSlice());
-      dispatch(setCorrectAnswersSlice({ ...question, isCorrect: true, id: questionIndex }));
+      dispatch(setCorrectAnswersSlice({...question,isCorrect: true,id: questionIndex,}));
     } else {
-      dispatch(setCorrectAnswersSlice({ ...question, isCorrect: false, id: questionIndex }));
+      dispatch(setCorrectAnswersSlice({...question,isCorrect: false,id: questionIndex,}));
     }
     if (data && questionIndex + 1 < data?.results?.length) {
       setQuestionIndex(questionIndex + 1);
@@ -40,8 +34,6 @@ const QuizScreen: FC<Props> = () => {
       navigate("/end", { replace: true });
     }
   };
-
-console.log(data);
 
   // for showing loading screen also error screen we we can use HOC,
   if (isLoading) return <Spinner />;
@@ -55,23 +47,8 @@ console.log(data);
         />
         <Question currentQuestionData={data?.results[questionIndex]} />
         <div className={classes.btnBox}>
-          {options
-            .map((item, id) => ({
-              id,
-              item,
-              textBtn: id == 0 ? "True" : "False",
-              typeBtn: id == 0 ? "secondary" : "gosht",
-            }))
-            .map(({ id, item, textBtn, typeBtn }) => {
-              return (
-                <Button
-                  onSubmit={() => handleClickAnswer(item)}
-                  key={id}
-                  text={textBtn}
-                  type={typeBtn}
-                />
-              );
-            })}
+          <Button onSubmit={handleClickAnswer}text={"True"}type={"secondary"}/>
+          <Button onSubmit={handleClickAnswer} text={"False"} type={"gosht"} />
         </div>
       </div>
     </Wrapper>

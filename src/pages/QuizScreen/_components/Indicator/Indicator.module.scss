@@ -8,14 +8,14 @@
     font-size: 25px;
     line-height: 116.13%;
     margin: 15px 0 10px 0;
-    @media (max-width: 380px) {
+    @media (max-width: 500px) {
       font-size: 13px;
       line-height: 116.13%;
     }
   }
   width: 300px;
 
-  @media (max-width: 380px) {
+  @media (max-width: 500px) {
     width: 100%;
   }
   .indicatorBox {
@@ -30,13 +30,16 @@
       }
     }
     &__line {
-      background-color: rgba(128, 128, 128, 0.4);
-      height: 2px;
+      background-color: #dbdeff;
+      height: 3.3px;
       width: 100%;
+      border-radius: 20px;
       span {
         height: 100%;
-        background-color: orange;
+        background: linear-gradient(180deg, #ff7878 0%, #ff7878 100%);
         display: block;
+        border-radius: 20px;
+        transition: 0.5s;
       }
     }
   }

@@ -9,7 +9,9 @@ type Props = {
 const Question: FC<Props> = ({ currentQuestionData }) => {
   return (
     <div className={classes.wrapper}>
-      <p> {currentQuestionData?.question.replace(/&quot;|&#039;/g, '"')}</p>
+      <p>
+        {currentQuestionData?.question.replace(/&quot;|&eacute;|&#039;/g, '"')}
+      </p>
     </div>
   );
 };
