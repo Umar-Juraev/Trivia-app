@@ -22,4 +22,7 @@
   margin: 15px 0;
   overflow-y: scroll;
   border-radius: 14px;
+  @media (max-width: 500px) {
+  margin: 19px 0 26px;
+  }
 }

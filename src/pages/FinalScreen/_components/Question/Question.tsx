@@ -10,7 +10,7 @@ type Props = {
 const Question: FC<Props> = ({ isCorrect, question }) => {
   
   return (
-    <div className={classes.item}>
+    <div className={`${classes.item} ${!isCorrect && classes.unCorrect}`}>
       <p>{question.replace(/&quot;|&eacute;|&#039;/g, '"')}</p>
       <span>{isCorrect ? <TrueIcon /> : <FalseIcon />}</span>
     </div>

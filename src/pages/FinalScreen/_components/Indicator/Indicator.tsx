@@ -18,7 +18,6 @@ const Indicator: FC<Props> = ({ correctAnswers, score }) => {
           <span>/{correctAnswers.length}</span>
         </p>
       </div>
-
       <div className={classes.indicatorBox}>
         {correctAnswers.map(({ id, isCorrect }) => {
           if (isCorrect) {

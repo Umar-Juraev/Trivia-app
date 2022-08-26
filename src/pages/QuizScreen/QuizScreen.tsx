@@ -19,9 +19,7 @@ const QuizScreen: FC<Props> = () => {
 
 
   const handleClickAnswer = (e: any) => {
-    const question = data?.results[questionIndex];
-    console.log(e.target.textContent.toUpperCase());
-    console.log(question?.correct_answer.toUpperCase());    
+    const question = data?.results[questionIndex]; 
     if (e.target.textContent.toUpperCase() === question?.correct_answer.toUpperCase()) {
       dispatch(setScoreSlice());
       dispatch(setCorrectAnswersSlice({...question,isCorrect: true,id: questionIndex,}));

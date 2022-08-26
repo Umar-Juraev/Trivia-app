@@ -1,4 +1,6 @@
 @import "./assets/fonts/_fonts";
+@import "./assets/styles/_animation";
+
 * {
   margin: 0;
   padding: 0;
@@ -22,10 +24,14 @@ body {
   padding: 0 10px;
   position: relative;
   z-index: 5;
-  
+  animation: fade 0.3s ease-in;
+  @media (max-width: 500px) {
+    padding: 0 20px;
+
+  }
 }
-.requiredField{
-  color: #FFFFFF!important;
+.requiredField {
+  color: #ffffff !important;
   font-size: 15px;
 }
 /* Chrome, Safari, Edge, Opera */
@@ -40,10 +46,10 @@ input[type="number"] {
   -moz-appearance: textfield;
 }
 
-::-webkit-scrollbar{
+::-webkit-scrollbar {
   width: 5px;
 }
-::-webkit-scrollbar-thumb{
-  background-color: #969CDC;
+::-webkit-scrollbar-thumb {
+  background-color: #969cdc;
   border-radius: 10px;
 }

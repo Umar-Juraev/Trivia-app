@@ -1,23 +1,45 @@
 .indicatorTitleWrapper {
   display: flex;
   align-items: center;
+  justify-content: center;
   gap: 20px;
+  margin-bottom: 20px;
+  @media (max-width: 500px) {
+    gap: 15px;
+  }
   .avatar {
     width: 45px;
     height: 45px;
     background-color: #fff;
     border-radius: 50%;
+
+    @media (max-width: 500px) {
+      width: 32px;
+      height: 32px;
+    }
   }
   p {
     color: #fff;
     font-weight: 500;
     font-size: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    @media (max-width: 500px) {
+      font-size: 18px;
+    }
     span {
       color: #ff7878;
       font-size: 21px;
+      &:first-child {
+        margin-left: 12px;
+      }
       &:last-child {
         font-size: 15px;
         color: #fff;
+        @media (max-width: 500px) {
+          font-size: 12px;
+        }
       }
     }
   }
@@ -25,6 +47,8 @@
 .indicatorBox {
   display: flex;
   align-items: center;
+  justify-content: center;
   flex-wrap: wrap;
   gap: 4px;
+  
 }

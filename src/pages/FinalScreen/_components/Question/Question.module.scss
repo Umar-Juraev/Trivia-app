@@ -1,6 +1,7 @@
 .item {
   width: 100%;
-  padding: 15px 20px ;
+  padding: 0 20px ;
+  height: 65px;
   border-radius: 14px;
   background: #fffbfa;
   margin-bottom: 15px;
@@ -8,6 +9,9 @@
   align-items: center;
   opacity: 0.9;
   justify-content: space-between;
+  &.unCorrect{
+    background-color: #FFDBDB;
+  }
   p{
     color: #464fac;
     font-weight: 500;
