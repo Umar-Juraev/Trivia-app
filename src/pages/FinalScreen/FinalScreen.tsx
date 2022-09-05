@@ -3,29 +3,32 @@ import { Button, Wrapper } from "components";
 import { Indicator, Question } from "./_components";
 import { CloseIcon } from "assets/svg";
 
-import classes from "./FinalScreen.module.scss";
-import { useAppSelector } from "store/hooks";
 import { useNavigate } from "react-router-dom";
+import { useLocalStorage } from "hooks";
+import { QuizDTO } from "typesDTO/quiz";
+
+import classes from "./FinalScreen.module.scss";
 
 type Props = {};
 
+
 const FinalScreen: FC<Props> = () => {
-  const { correctAnswers, score } = useAppSelector((state) => state.filters);
+  const [correctAnswers] = useLocalStorage("correctAnswers");
   const navigate = useNavigate();
   const handlefinish = () => {
     navigate("/settings", { replace: true });
-    localStorage.removeItem('filters')
+    localStorage.clear();
   };
 
   return (
     <Wrapper>
       <div className={`${classes.wrapper} container`}>
         <span onClick={handlefinish}>
-        <CloseIcon  className={classes.icon} />
+          <CloseIcon className={classes.icon} />
         </span>
-        <Indicator score={score} correctAnswers={correctAnswers} />
+        <Indicator correctAnswers={correctAnswers} />
         <div className={classes.questionBox}>
-          {correctAnswers.map(({ id, isCorrect, question }) => (
+          {correctAnswers.map(({ id, isCorrect, question }:QuizDTO) => (
             <Question key={id} isCorrect={isCorrect} question={question} />
           ))}
         </div>

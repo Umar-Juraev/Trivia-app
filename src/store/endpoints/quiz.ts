@@ -1,6 +1,6 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 import { baseUrl } from "constants/url";
-import { GetQueryTypes } from "utils/types";
+import { GetQueryTypes, QuizParams } from "utils/types";
 import { QuizDTO } from "typesDTO/quiz";
 
 export const quizApi = createApi({
@@ -14,10 +14,7 @@ export const quizApi = createApi({
     // Queries
     quiz: builder.query<
       GetQueryTypes<QuizDTO>,
-      {
-        amount: string | number;
-        difficulty: string;
-      }
+      QuizParams
     >({
       query: ({ amount, difficulty }) => ({
         url: `/api.php?amount=${amount}&difficulty=${difficulty}&type=boolean`,

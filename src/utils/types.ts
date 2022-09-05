@@ -1,6 +1,6 @@
 export type SelectOptionTypes = {
-  id: string ;
-  name: string ;
+  id: string;
+  name: string;
 };
 
 export type ChangeInputType = {
@@ -10,4 +10,9 @@ export type ChangeInputType = {
 
 export type GetQueryTypes<T> = {
   results: T[];
+};
+
+export type QuizParams = {
+  amount: string | number;
+  difficulty: string;
 };

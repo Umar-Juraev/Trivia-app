@@ -5,16 +5,18 @@ import classes from "./Indicator.module.scss";
 
 type Props = {
   correctAnswers: QuizDTO[];
-  score: number;
 };
 
-const Indicator: FC<Props> = ({ correctAnswers, score }) => {
+const Indicator: FC<Props> = ({ correctAnswers }) => {
   return (
     <div className={classes.wrapper}>
       <div className={classes.indicatorTitleWrapper}>
         <div className={classes.avatar}></div>
         <p>
-          You scored <span>{score}</span>
+          You scored
+          <span>
+            {correctAnswers.filter(({ isCorrect }) => isCorrect).length}
+          </span>
           <span>/{correctAnswers.length}</span>
         </p>
       </div>
