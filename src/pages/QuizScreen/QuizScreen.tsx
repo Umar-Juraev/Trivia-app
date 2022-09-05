@@ -10,10 +10,10 @@ import classes from "./QuizScreen.module.scss";
 
 type Props = {};
 const QuizScreen: FC<Props> = () => {
-  const [filters,] = useLocalStorage("filters");
-  const [,setCorrectAnswers ] = useLocalStorage("correctAnswers");
+  const [filters] = useLocalStorage("filters");
+  const [, setCorrectAnswers] = useLocalStorage("correctAnswers");
 
-  const { data, isLoading, refetch } = useQuizQuery(filters);
+  const { data, isLoading, isFetching, refetch } = useQuizQuery(filters);
   const [questionIndex, setQuestionIndex] = useState<number>(0);
   const navigate = useNavigate();
 
@@ -25,7 +25,7 @@ const QuizScreen: FC<Props> = () => {
     ) {
       setCorrectAnswers({ ...question, isCorrect: true, id: questionIndex });
     } else {
-      setCorrectAnswers({...question,isCorrect: false,id: questionIndex, });
+      setCorrectAnswers({ ...question, isCorrect: false, id: questionIndex });
     }
     if (data && questionIndex + 1 < data?.results?.length) {
       setQuestionIndex(questionIndex + 1);
@@ -39,7 +39,7 @@ const QuizScreen: FC<Props> = () => {
   }, []);
 
   // for showing loading screen also error screen we we can use HOC,
-  if (isLoading) return <Spinner />;
+  if (isLoading || isFetching) return <Spinner />;
   return (
     <Wrapper light>
       <div className={` ${classes.wrapper} container`}>
@@ -50,7 +50,11 @@ const QuizScreen: FC<Props> = () => {
         />
         <Question currentQuestionData={data?.results[questionIndex]} />
         <div className={classes.btnBox}>
-          <Button onSubmit={handleClickAnswer}text={"True"}type={"secondary"}/>
+          <Button
+            onSubmit={handleClickAnswer}
+            text={"True"}
+            type={"secondary"}
+          />
           <Button onSubmit={handleClickAnswer} text={"False"} type={"gosht"} />
         </div>
       </div>
