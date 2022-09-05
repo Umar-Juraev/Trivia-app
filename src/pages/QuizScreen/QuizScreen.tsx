@@ -11,6 +11,12 @@ import classes from "./QuizScreen.module.scss";
 type Props = {};
 const QuizScreen: FC<Props> = () => {
   const [filters] = useLocalStorage("filters");
+
+  // instead of Redux state, I used localStorage for data manipulation,
+  // because if we refresh the page we will lose all data
+
+
+  // for missing the first item i used comma
   const [, setCorrectAnswers] = useLocalStorage("correctAnswers");
 
   const { data, isLoading, isFetching, refetch } = useQuizQuery(filters);
