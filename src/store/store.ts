@@ -1,15 +1,17 @@
 import { configureStore } from '@reduxjs/toolkit';
 import { setupListeners } from '@reduxjs/toolkit/dist/query';
 import { quizApi } from './endpoints/quiz';
-import filtersSlice from './slices/quiz';
+import changeRoute from './slices/changeRoute';
+
+
 
 const store = configureStore({
   reducer:{
     [quizApi.reducerPath]:quizApi.reducer,
-    filters: filtersSlice.reducer,
+    changeRoute: changeRoute.reducer,
   },
   middleware:(getDefaultMiddleware)=>
-  getDefaultMiddleware()
+  getDefaultMiddleware({serializableCheck:false})
   .concat(quizApi.middleware)
 })
 setupListeners(store.dispatch);

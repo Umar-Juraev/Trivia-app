@@ -5,18 +5,22 @@ import { Label, Welcome } from "./_components";
 import { useInput, useLocalStorage } from "hooks";
 import { difficulty as difficultyData } from "constants/difficulty";
 import { useNavigate } from "react-router-dom";
+import { navigateSlice } from "store/slices/changeRoute";
+import { useAppDispatch, useAppSelector } from "store/hooks";
 
 import classes from "./SettingScreen.module.scss";
 
 type Props = {};
 
 const SettingScreen: FC<Props> = () => {
+  const { path } = useAppSelector((state) => state.changeRoute);
   const [difficulty, setDifficulty] = useState<string>("");
   const [required, setRequired] = useState<boolean>(false);
   const navigate = useNavigate();
+  const [, setFilters] = useLocalStorage("filters");
+  const [, setPath] = useLocalStorage("path");
+  const dispatch = useAppDispatch();
   const register = useInput();
-
-  const [,setFilters] = useLocalStorage("filters");
 
   const handleChange = (e: string) => {
     setDifficulty(e);
@@ -25,7 +29,7 @@ const SettingScreen: FC<Props> = () => {
   const handleSubmit = () => {
     if (difficulty && register) {
       setFilters({ difficulty, amount: register.value });
-      navigate("/quizes", { replace: true });
+      dispatch(navigateSlice({ path: "/quizes", navigate,setPath }));
       setRequired(false);
     } else {
       setRequired(true);
@@ -44,6 +48,7 @@ const SettingScreen: FC<Props> = () => {
         />
         <Input
           {...register}
+          type="number"
           label={<Label text="Amount" icon={<AmountIcon />} />}
           required={required}
         />

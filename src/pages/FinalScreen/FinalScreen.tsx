@@ -6,18 +6,24 @@ import { CloseIcon } from "assets/svg";
 import { useNavigate } from "react-router-dom";
 import { useLocalStorage } from "hooks";
 import { QuizDTO } from "typesDTO/quiz";
+import { navigateSlice } from "store/slices/changeRoute";
+import { useAppDispatch } from "store/hooks";
 
 import classes from "./FinalScreen.module.scss";
 
 type Props = {};
 
-
 const FinalScreen: FC<Props> = () => {
   const [correctAnswers] = useLocalStorage("correctAnswers");
+  const [, setPath] = useLocalStorage("path");
+  const dispatch = useAppDispatch();
+
+
   const navigate = useNavigate();
   const handlefinish = () => {
-    navigate("/settings", { replace: true });
-    localStorage.clear();
+    dispatch(navigateSlice({path:"/settings",navigate,setPath}));
+    localStorage.removeItem("filters");
+    localStorage.removeItem("correctAnswers");
   };
 
   return (
@@ -28,7 +34,7 @@ const FinalScreen: FC<Props> = () => {
         </span>
         <Indicator correctAnswers={correctAnswers} />
         <div className={classes.questionBox}>
-          {correctAnswers.map(({ id, isCorrect, question }:QuizDTO) => (
+          {correctAnswers.map(({ id, isCorrect, question }: QuizDTO) => (
             <Question key={id} isCorrect={isCorrect} question={question} />
           ))}
         </div>

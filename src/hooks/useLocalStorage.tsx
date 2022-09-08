@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 
-type Keys = "filters" | "correctAnswers";
+type Keys = "filters" | "correctAnswers" | 'path';
 
 const useLocalStorage = (key: Keys) => {
   const [value, setValue] = useState<any>([]);
@@ -15,7 +15,7 @@ const useLocalStorage = (key: Keys) => {
 
   function setDataTolocalSotage(value: any) {
     let dataFromStorage = getDataFromLocalStorage();
-    if (key === "filters") {
+    if (key === "filters" || key === "path" ) {
       localStorage.setItem(key, JSON.stringify(value));
     }
     else{
@@ -29,7 +29,7 @@ const useLocalStorage = (key: Keys) => {
     setValue(dataFromStorage);
   }, []);
 
-  return [ value, setDataTolocalSotage ];
+  return [value, setDataTolocalSotage ];
 };
 
 export default useLocalStorage;

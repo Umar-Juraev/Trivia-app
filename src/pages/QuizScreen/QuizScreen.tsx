@@ -5,20 +5,23 @@ import { Button, Spinner, Wrapper } from "components";
 import { useQuizQuery } from "store/endpoints/quiz";
 import { useNavigate } from "react-router-dom";
 import { useLocalStorage } from "hooks";
+import { navigateSlice } from "store/slices/changeRoute";
+import { useAppDispatch } from "store/hooks";
 
 import classes from "./QuizScreen.module.scss";
 
 type Props = {};
 const QuizScreen: FC<Props> = () => {
   const [filters] = useLocalStorage("filters");
+  const dispatch = useAppDispatch();
 
   // instead of Redux state, I used localStorage for data manipulation,
   // because if we refresh the page we will lose all data
 
-
   // for missing the first item i used comma
-  const [, setCorrectAnswers] = useLocalStorage("correctAnswers");
 
+  const [, setCorrectAnswers] = useLocalStorage("correctAnswers");
+  const [, setPath] = useLocalStorage("path");
   const { data, isLoading, isFetching, refetch } = useQuizQuery(filters);
   const [questionIndex, setQuestionIndex] = useState<number>(0);
   const navigate = useNavigate();
@@ -36,13 +39,15 @@ const QuizScreen: FC<Props> = () => {
     if (data && questionIndex + 1 < data?.results?.length) {
       setQuestionIndex(questionIndex + 1);
     } else {
-      navigate("/end", { replace: true });
+      dispatch(navigateSlice({ path: "/end", navigate,setPath }));
     }
   };
 
   useEffect(() => {
     refetch();
   }, []);
+
+  
 
   // for showing loading screen also error screen we we can use HOC,
   if (isLoading || isFetching) return <Spinner />;
